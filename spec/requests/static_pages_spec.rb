@@ -36,7 +36,4 @@ describe "StaticPages" do
     		:text => "#{base_title} | About Us")
     end
   end
-  it "should have a random page 'Testing'" do
-    visit '/static_pages/testing'
-  end
 end
