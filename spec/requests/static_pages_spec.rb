@@ -1,39 +1,34 @@
 require 'spec_helper'
 
-describe "StaticPages" do
-	let(:base_title) {"Ruby on Rails Tutorial Sample App"}
+describe "Static pages" do
+
+  subject { page }
+
   describe "Home page" do
-    it "should have the content 'Sample App'" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      visit '/static_pages/home'
-      page.should have_content('Sample App')
-    end
-    it "should have the right title 'Home'" do
-    	visit '/static_pages/home'
-    	page.should have_selector('title', 
-    		:text => "#{base_title} | Home")
-    end
+    before { visit root_path }
+
+    it { should have_selector('h1',    text: 'Sample App') }
+    it { should have_selector('title', text: full_title('')) }
   end
+
   describe "Help page" do
-  	it "should have the content 'Help!'" do
-  		visit '/static_pages/help'
-  		page.should have_content('Help!')
-  	end
-  	it "should have the right title 'Help'" do
-    	visit '/static_pages/help'
-    	page.should have_selector('title', 
-    		:text => "#{base_title} | Help")
-    end
+    before { visit help_path }
+
+    it { should have_selector('h1',    text: 'help') }
+    it { should have_selector('title', text: full_title('Help')) }
   end
+
   describe "About page" do
-  	it "should have content 'About Us'" do
-  		visit '/static_pages/about'
-  		page.should have_content ('About Us')
-  	end
-  	it "should have the right title 'About Us'" do
-    	visit '/static_pages/about'
-    	page.should have_selector('title', 
-    		:text => "#{base_title} | About Us")
-    end
+    before { visit about_path }
+
+    it { should have_selector('h1',    text: 'About') }
+    it { should have_selector('title', text: full_title('About Us')) }
+  end
+
+  describe "Contact page" do
+    before { visit contact_path }
+
+    it { should have_selector('h1',    text: 'Contact') }
+    it { should have_selector('title', text: full_title('Contact')) }
   end
 end
