@@ -1,6 +1,9 @@
 SecondApp::Application.routes.draw do
   get "users/new"
 
+  resources :users #establish 'users' as a RESTful resource...CRUD capabilities
+  
+
   root to: 'static_pages#home'
 
   match '/signup', to: 'users#new'
@@ -10,6 +13,7 @@ SecondApp::Application.routes.draw do
   match '/about', to: 'static_pages#about'
 
   match '/contact', to: 'static_pages#contact'
+
 
 
 
