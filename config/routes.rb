@@ -2,11 +2,18 @@ SecondApp::Application.routes.draw do
   get "users/new"
 
   resources :users #establish 'users' as a RESTful resource...CRUD capabilities
+
+  resources :sessions, only: [:new, :create, :destroy] #establish sessions as a resource with new(sign in), destroy(sign out), and create(new session) actions
+
   
 
   root to: 'static_pages#home'
 
   match '/signup', to: 'users#new'
+
+  match '/signin', to: 'sessions#new'
+
+  match 'signout', to: 'sessions#destroy', via: :delete
   
   match '/help', to: 'static_pages#help'
 
